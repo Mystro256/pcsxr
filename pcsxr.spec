@@ -1,18 +1,17 @@
-%define svnversion 75200
+%global svnversion 77577
 Name:           pcsxr
 Version:        1.9.92
-Release:        1.20120219svn%{svnversion}%{?dist}
+Release:        1.20120421svn%{svnversion}%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
-# SOURCE/plugins/gxvideo/* includes some GPLv3+
 # SOURCE/libpcsxcore/coff.h is BSD License (no advertising)
 # SOURCE/libpcsxcore/sjisfont.h is Public Domain
 # SOURCE/libpcsxcore/psemu_plugin_defs.h is Public Domain
-License:        GPLv3+ and BSD and Public Domain
+License:        GPLv2+ and BSD and Public Domain
 Url:            http://pcsxr.codeplex.com/
 #The source can be downloaded here:
-#http://pcsxr.codeplex.com/SourceControl/changeset/changes/75200
+#http://pcsxr.codeplex.com/SourceControl/changeset/changes/77577
 Source:         %{name}-%{svnversion}.zip
 
 BuildRequires:  SDL-devel
@@ -78,6 +77,13 @@ fi
 /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 %changelog
+* Fri Mar 9 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120421svn77577
+- Updated to new SVN checkout version
+
+* Fri Mar 9 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120309svn75683
+- Updated to new SVN checkout version
+- Changed define to global
+
 * Sun Feb 19 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120219svn75200
 - Updated to new SVN checkout version
 
