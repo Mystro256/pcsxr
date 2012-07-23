@@ -1,7 +1,7 @@
-%global svnversion 78288
+%global svnversion 78971
 Name:           pcsxr
 Version:        1.9.92
-Release:        1.20120705svn%{svnversion}%{?dist}
+Release:        1.20120723svn%{svnversion}%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -11,8 +11,10 @@ Summary:        A plugin based PlayStation (PSX) emulator with high compatibilit
 License:        GPLv2+ and BSD and Public Domain
 Url:            http://pcsxr.codeplex.com/
 #The source can be downloaded here:
-#http://pcsxr.codeplex.com/SourceControl/changeset/changes/78288
+#http://pcsxr.codeplex.com/SourceControl/changeset/changes/78971
 Source:         %{name}-%{svnversion}.zip
+#http://pcsxr.codeplex.com/workitem/8567
+Patch0:         %{name}-remove-assertion-64bit.patch
 
 BuildRequires:  SDL-devel
 BuildRequires:  gtk2-devel
@@ -40,6 +42,7 @@ important PSX components, and is able to play many games without problems.
 %setup -q -n %{name}
 #remove any unnecessary files:
 rm -f -r win32 macosx debian-upstream
+%patch0 -p1
 
 %build
 sh autogen.sh
@@ -64,48 +67,43 @@ desktop-file-install \
 %{_libdir}/games/psemu
 %{_datadir}/applications/%{name}.desktop
 
-%post
-/bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
-
-%postun
-if [ $1 -eq 0 ] ; then
-    /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-    /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-fi
-
-%posttrans
-/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-
 %changelog
-* Fri Mar 9 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120705svn78288
+* Mon Jul 23 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120723svn78971
+- Added a patch to temporarily fix a 64bit-only problem
+
+* Thu Jul 19 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120719svn78971
+- Updated to new SVN checkout version
+- Removed unnessary hicolor icon updating
+
+* Thu Jul 5 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120705svn78288
 - Updated to new SVN checkout version
 
-* Fri Mar 9 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120421svn77577
+* Fri Mar 9 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120421svn77577
 - Updated to new SVN checkout version
 
-* Fri Mar 9 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120309svn75683
+* Fri Mar 9 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120309svn75683
 - Updated to new SVN checkout version
 - Changed define to global
 
-* Sun Feb 19 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120219svn75200
+* Sun Feb 19 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120219svn75200
 - Updated to new SVN checkout version
 
-* Sun Feb 19 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120219svn75156
+* Sun Feb 19 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120219svn75156
 - Updated to new SVN checkout version
 - Added svn macro
 - Removed incorrect disabling of opengl for 64bit
 
-* Wed Feb 8 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-3.20120128svn73976
+* Wed Feb 8 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-3.20120128svn73976
 - Minor source change for convenience.
 
-* Wed Feb 8 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-2.20120128svn73976
+* Wed Feb 8 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-2.20120128svn73976
 - Fixed and optimized source files for size and convenience.
 - Added missing file in license breakdown
 
-* Sat Jan 28 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120128svn73976
+* Sat Jan 28 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120128svn73976
 - Fixed version number to be more specific
 - Fixed inproper license
 - Trimmed down the source, removed non-linux code
 
-* Sat Jan 28 2011 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120128svn
+* Sat Jan 28 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120128svn
 - Initial package SPEC created

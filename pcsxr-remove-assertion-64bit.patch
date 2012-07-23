@@ -1,0 +1,11 @@
+diff -rupN pcsxr-old/libpcsxcore/ix86_64/ix86-64.c pcsxr/libpcsxcore/ix86_64/ix86-64.c
+--- pcsxr-old/libpcsxcore/ix86_64/ix86-64.c	2012-07-23 16:57:47.000000000 -0400
++++ pcsxr/libpcsxcore/ix86_64/ix86-64.c	2012-07-23 17:15:41.620584335 -0400
+@@ -230,7 +230,6 @@ void x86SetJ8( u8* j8 )
+ 	u32 jump = ( x86Ptr - (s8*)j8 ) - 1;
+ 
+ 	if ( jump > 0x7f ) {
+-		assert(0);
+ 		SysPrintf( "j8 greater than 0x7f!!\n" );
+ 	}
+ 	*j8 = (u8)jump;
