@@ -1,7 +1,7 @@
-%global svnversion 78971
+%global svnversion 82044
 Name:           pcsxr
 Version:        1.9.92
-Release:        1.20120723svn%{svnversion}%{?dist}
+Release:        1.20130104svn%{svnversion}%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -11,7 +11,7 @@ Summary:        A plugin based PlayStation (PSX) emulator with high compatibilit
 License:        GPLv2+ and BSD and Public Domain
 Url:            http://pcsxr.codeplex.com/
 #The source can be downloaded here:
-#http://pcsxr.codeplex.com/SourceControl/changeset/changes/78971
+#http://pcsxr.codeplex.com/SourceControl/changeset/82044
 Source:         %{name}-%{svnversion}.zip
 #http://pcsxr.codeplex.com/workitem/8567
 Patch0:         %{name}-remove-assertion-64bit.patch
@@ -58,7 +58,7 @@ desktop-file-install \
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc doc/keys.txt doc/tweaks.txt AUTHORS COPYING README NEWS
+%doc doc/keys.txt doc/tweaks.txt AUTHORS COPYING README
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/%{name}
 %{_datadir}/pixmaps/%{name}-icon.png
@@ -68,6 +68,10 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Fri Jan 4 2013 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20130104svn82044
+- Updated to new SVN checkout version
+- Removed unnecessary zero length Doc file (NEWS)
+
 * Mon Jul 23 2012 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20120723svn78971
 - Added a patch to temporarily fix a 64bit-only problem
 
