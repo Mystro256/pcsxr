@@ -17,7 +17,7 @@ Source:         %{name}-%{svnversion}.zip
 Patch0:         %{name}-remove-assertion-64bit.patch
 
 BuildRequires:  SDL-devel
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  nasm
 BuildRequires:  mesa-libGL-devel
 BuildRequires:  gettext
