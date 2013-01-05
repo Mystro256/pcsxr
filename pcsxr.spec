@@ -1,7 +1,7 @@
 %global svnversion 82044
 Name:           pcsxr
 Version:        1.9.92
-Release:        1.20130104svn%{svnversion}%{?dist}
+Release:        2.20130104svn%{svnversion}%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -17,7 +17,7 @@ Source:         %{name}-%{svnversion}.zip
 Patch0:         %{name}-remove-assertion-64bit.patch
 
 BuildRequires:  SDL-devel
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  nasm
 BuildRequires:  mesa-libGL-devel
 BuildRequires:  gettext
@@ -68,6 +68,9 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Fri Jan 4 2013 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-2.20130104svn82044
+- Fixed missing gtk3 dependency
+
 * Fri Jan 4 2013 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-1.20130104svn82044
 - Updated to new SVN checkout version
 - Removed unnecessary zero length Doc file (NEWS)
