@@ -1,7 +1,7 @@
-%global svnversion 82044
+%global svnversion 82923
 Name:           pcsxr
 Version:        1.9.92
-Release:        2.20130104svn%{svnversion}%{?dist}
+Release:        3.20130216svn%{svnversion}%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -11,7 +11,7 @@ Summary:        A plugin based PlayStation (PSX) emulator with high compatibilit
 License:        GPLv2+ and BSD and Public Domain
 Url:            http://pcsxr.codeplex.com/
 #The source can be downloaded here:
-#http://pcsxr.codeplex.com/SourceControl/changeset/82044
+#http://pcsxr.codeplex.com/SourceControl/changeset/82923
 Source:         %{name}-%{svnversion}.zip
 #http://pcsxr.codeplex.com/workitem/8567
 Patch0:         %{name}-remove-assertion-64bit.patch
@@ -68,6 +68,10 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sat Feb 16 2013 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-3.20130216svn82923
+- Updated to new SVN version
+- Changing version numbering to match Guidelines
+
 * Fri Jan 4 2013 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-2.20130104svn82044
 - Fixed missing gtk3 dependency
 
