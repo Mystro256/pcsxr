@@ -1,7 +1,7 @@
-%global svnversion 85000
+%global svnversion 89782
 Name:           pcsxr
-Version:        1.9.92
-Release:        4.20130530svn%{svnversion}%{?dist}
+Version:        1.9.93
+Release:        1%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -11,8 +11,8 @@ Summary:        A plugin based PlayStation (PSX) emulator with high compatibilit
 License:        GPLv2+ and BSD and Public Domain
 Url:            http://pcsxr.codeplex.com/
 #The source can be downloaded here:
-#http://pcsxr.codeplex.com/SourceControl/changeset/85000
-Source:         %{name}-%{svnversion}.zip
+#http://pcsxr.codeplex.com/downloads/get/722114
+Source:         %{name}-%{version}.tar.bz2
 #http://pcsxr.codeplex.com/workitem/8567
 Patch0:         %{name}-remove-assertion-64bit.patch
 
@@ -40,6 +40,8 @@ important PSX components, and is able to play many games without problems.
 
 %prep
 %setup -q -n %{name}
+#fixing permissions:
+chmod -x */*.c */*.h */*/*.c */*/*/*.c */*/*.h */*/*/*.h
 #remove any unnecessary files:
 rm -f -r win32 macosx debian-upstream
 %patch0 -p1
@@ -68,6 +70,9 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Thu May 30 2013 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.93-1
+- Updated to new beta release
+
 * Thu May 30 2013 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.92-4.20130530svn85000
 - Updated to new SVN version
 
