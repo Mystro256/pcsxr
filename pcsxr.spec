@@ -1,7 +1,7 @@
 %global svnversion 89782
 Name:           pcsxr
 Version:        1.9.93
-Release:        2.svn%{svnversion}%{?dist}
+Release:        3.svn%{svnversion}%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -69,6 +69,9 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Mon Sep 01 2014 Sérgio Basto <sergio@serjux.com> - 1.9.93-3.svn89782
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Sat Apr 5 2014 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.93-2.svn89782
 - Update to svn for Fedora 21 (beta 1.9.93 version doesn't build)
 
