@@ -1,7 +1,7 @@
-%global svnversion 89782
+%global svnversion 87788
 Name:           pcsxr
-Version:        1.9.93
-Release:        3.svn%{svnversion}%{?dist}
+Version:        1.9.94
+Release:        1
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -10,13 +10,13 @@ Summary:        A plugin based PlayStation (PSX) emulator with high compatibilit
 # SOURCE/libpcsxcore/psemu_plugin_defs.h is Public Domain
 License:        GPLv2+ and BSD and Public Domain
 Url:            http://pcsxr.codeplex.com/
-#The source can be downloaded here:
-#http://pcsxr.codeplex.com/SourceControl/changeset/89782
+#The source can be downloaded here (1.9.94 is a snapshot of svn 87788):
+#https://pcsxr.codeplex.com/downloads/get/756488
 Source:         %{name}-%{svnversion}.zip
 #http://pcsxr.codeplex.com/workitem/8567
 Patch0:         %{name}-remove-assertion-64bit.patch
 
-BuildRequires:  SDL-devel
+BuildRequires:  SDL2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  nasm
 BuildRequires:  mesa-libGL-devel
@@ -41,7 +41,7 @@ important PSX components, and is able to play many games without problems.
 %prep
 %setup -q -n %{name}
 #remove any unnecessary files:
-rm -f -r win32 macosx debian-upstream
+rm -f -r win32 macosx
 #suppresses 64 bit assert issues (patch):
 %patch0 -p1
 
@@ -69,8 +69,9 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
-* Mon Sep 01 2014 Sérgio Basto <sergio@serjux.com> - 1.9.93-3.svn89782
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+* Mon Oct 27 2014 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.94-1
+- Updated to 1.9.94 release (marked as alpha on website)
+- Use SDL2
 
 * Sat Apr 5 2014 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.93-2.svn89782
 - Update to svn for Fedora 21 (beta 1.9.93 version doesn't build)
