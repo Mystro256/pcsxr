@@ -1,7 +1,7 @@
 %global svnversion 87788
 Name:           pcsxr
 Version:        1.9.94
-Release:        1
+Release:        2%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -69,6 +69,9 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Tue Oct 28 2014 Nicolas Chauvet <kwizart@gmail.com> - 1.9.94-2
+- Restore dist tag
+
 * Mon Oct 27 2014 Jeremy Newton <alexjnewt@hotmail.com> - 1.9.94-1
 - Updated to 1.9.94 release (marked as alpha on website)
 - Use SDL2
