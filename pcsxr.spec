@@ -10,7 +10,7 @@ Summary:        A plugin based PlayStation (PSX) emulator with high compatibilit
 # SOURCE/libpcsxcore/sjisfont.h is Public Domain
 # SOURCE/libpcsxcore/psemu_plugin_defs.h is Public Domain
 License:        GPLv2+ and BSD and Public Domain
-Url:            http://pcsxr.codeplex.com/
+URL:            http://pcsxr.codeplex.com/
 #The source can be downloaded here (1.9.94 is a snapshot of svn 87788):
 #https://pcsxr.codeplex.com/downloads/get/756488
 Source:         %{name}-%{svnversion}.zip
@@ -47,26 +47,29 @@ rm -f -r win32 macosx
 %patch0 -p1
 
 %build
-sh autogen.sh
-%configure --prefix=/usr --enable-libcdio --enable-opengl
-make %{?_smp_mflags}
+autoreconf -ivf
+%configure --prefix=%{_prefix} --enable-libcdio --enable-opengl
+%{make_build} V=1
 
 %install
-make %{?_smp_mflags} install DESTDIR=%{buildroot}
+%{make_install}
+
 desktop-file-install \
   --remove-key=Encoding \
   --dir %{buildroot}%{_datadir}/applications \
-  data/%{name}.desktop
+  %{buildroot}%{_datadir}/applications/%{name}.desktop
+
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc doc/keys.txt doc/tweaks.txt AUTHORS COPYING README
+%doc doc/keys.txt doc/tweaks.txt AUTHORS README
+%license COPYING
 %{_mandir}/man1/%{name}.1*
-%{_datadir}/%{name}
+%{_datadir}/%{name}/
 %{_datadir}/pixmaps/%{name}-icon.png
-%{_datadir}/psemu
+%{_datadir}/psemu/
 %{_bindir}/%{name}
-%{_libdir}/games/psemu
+%{_libdir}/games/psemu/
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
