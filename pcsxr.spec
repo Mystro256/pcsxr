@@ -1,7 +1,8 @@
 %global svnversion 87788
+%undefine _hardened_build
 Name:           pcsxr
 Version:        1.9.94
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A plugin based PlayStation (PSX) emulator with high compatibility
 
 #All is GPLv2+ except:
@@ -69,6 +70,9 @@ desktop-file-install \
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed Nov 02 2016 Leigh Scott <leigh123linux@googlemail.com> - 1.9.94-3
+- Disable hardening (rfbz#4316)
+
 * Tue Oct 28 2014 Nicolas Chauvet <kwizart@gmail.com> - 1.9.94-2
 - Restore dist tag
 
